@@ -15,7 +15,7 @@
 @property (nonatomic, assign) SystemSoundID SystemSoundID;
 
 //音频属性
-@property (nonatomic, strong) AVAudioPlayer *Player;
+@property (nonatomic, strong) AVAudioPlayer *PlayeR;
 
 @end
 
@@ -23,12 +23,12 @@
 
 //懒加载初始化音频播放对象
 - (AVAudioPlayer *)player {
-    if (!_Player) {
+    if (!_PlayeR) {
         NSURL *url = [[NSBundle mainBundle] URLForResource:@"AllOfMe.mp3" withExtension:nil];
-        _Player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+        _PlayeR = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     }
 
-    return _Player;
+    return _PlayeR;
 }
 
 - (void)viewDidLoad {
@@ -49,21 +49,21 @@
 
 - (IBAction)playAudio:(id)sender {
     //播放mp3
-    [self.Player play];
+    [self.PlayeR play];
 
 }
 
 - (IBAction)pauseAudio:(id)sender {
-    if (self.Player.playing) {
+    if (self.PlayeR.playing) {
         //暂停
-        [self.Player pause];
+        [self.PlayeR pause];
     }
 }
 
 - (IBAction)cancelAudio:(id)sender {
-    [self.Player stop];
+    [self.PlayeR stop];
 
-    self.Player = nil;
+    self.PlayeR = nil;
 }
 
 
